@@ -18,6 +18,11 @@ public class NavBar{
     	// A top-level menu item that opens a submenu
     	MenuItem drinks = navbar.addItem("Home", null, null);
     	MenuItem courses = navbar.addItem("Courses", null, null);
+    	MenuItem License_Management = navbar.addItem("License Management", null, null);
+    	MenuItem ClassRoom_Management = navbar.addItem("ClassRoom Management", null, null);
+    	MenuItem Assets_Management = navbar.addItem("Assets Management", null, null);
+    	MenuItem Users_Management = navbar.addItem("Users Management", null, null);
+    	MenuItem Talentify_Users = navbar.addItem("Talentify Users", null, null);
     } 
     
    

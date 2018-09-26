@@ -90,7 +90,7 @@ public class Talentify extends UI {
 		
 	}
 
-	@WebServlet(urlPatterns = "/*", name = "TalentifyServlet", asyncSupported = true)
+	@WebServlet(urlPatterns = "/home", name = "TalentifyServlet", asyncSupported = true)
 	@VaadinServletConfiguration(ui = Talentify.class, productionMode = false)
 	public static class TalentifyServlet extends VaadinServlet {
 	}

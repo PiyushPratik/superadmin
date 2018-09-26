@@ -5,8 +5,8 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-resources/gwt"/>
-        <property name="context-root" value="SuperAdmin"/>
         <property name="java-output-path" value="/SuperAdmin/target/classes"/>
         <property name="component.exclusion.patterns" value="WEB-INF/classes/VAADIN/widgetsets/WEB-INF/**"/>
+        <property name="context-root" value="/"/>
     </wb-module>
 </project-modules>
