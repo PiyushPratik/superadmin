@@ -8,11 +8,13 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.google.gson.Gson;
-
 public class RestUtility {
+	
+	JSONObject responseObject = new JSONObject();
+	
 	public JSONObject getRequest(String urlString) {
 		StringBuffer response = new StringBuffer();
 		try {
@@ -38,11 +40,11 @@ public class RestUtility {
 		return new JSONObject(response.toString());
 	}
 
-	public String postRequest(String urlString, String postString) {
-		StringBuffer response = new StringBuffer();
+	public JSONObject postRequest(String urlString, String postString) throws JSONException, IOException {
+		StringBuffer response = new StringBuffer();HttpURLConnection conn = null;
 		try {
 			URL url = new URL(urlString);
-			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("POST");
 
 			conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded");
@@ -54,10 +56,6 @@ public class RestUtility {
 			OutputStream os = conn.getOutputStream();
 			os.write(postString.getBytes());
 			os.flush();
-
-			if (conn.getResponseCode() != 200) {
-				throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
-			}
 			BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
 			String output;
 			System.out.println("Output from Server .... \n");
@@ -70,7 +68,10 @@ public class RestUtility {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return response.toString();
+		
+		responseObject.put("statusCode",conn.getResponseCode());
+		responseObject.put("statusMSG",response.toString());
+		return responseObject;
 
 	}
 }
